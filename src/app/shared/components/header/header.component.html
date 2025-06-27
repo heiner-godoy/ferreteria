@@ -1,0 +1,87 @@
+<div class="flex flex-col-reverse justify-between gap-6 md:flex-row md:items-center">
+    <div class="capitalize">
+      <!-- Eliminado el texto FERRETYCOM del header -->
+    </div>
+    <div class="flex items-center">
+      <div class="mr-auto md:mr-4 md:w-56">
+        <div class="relative w-full min-w-[200px] h-10">
+          <input class="peer w-full h-full bg-transparent text-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-2.5 rounded-[7px] border-blue-gray-200 focus:border-blue-500" placeholder=" ">
+          <label class="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal peer-placeholder-shown:text-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[3.75] text-blue-gray-400 peer-focus:text-blue-500 before:border-blue-gray-200 peer-focus:before:border-blue-500 after:border-blue-gray-200 peer-focus:after:border-blue-500">Type here</label>
+        </div>
+      </div>
+      <!-- Botón Carrito -->
+      <button class="relative middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-red-600 hover:bg-red-100 active:bg-red-200" type="button" (click)="toggleCarrito()">
+        <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 text-red-600">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386a1.5 1.5 0 011.415 1.028l.298.894M6.75 6h14.25l-1.5 9H7.5m0 0L6.136 4.922A1.5 1.5 0 004.721 4H3m4.5 13.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm10.5 0a1.5 1.5 0 100 3 1.5 1.5 0 000-3z" />
+          </svg>
+          <span *ngIf="cantidadCarrito > 0" class="absolute -top-1 -right-1 bg-red-600 text-black text-xs rounded-full px-1.5 py-0.5 font-bold border border-white">{{ cantidadCarrito }}</span>
+        </span>
+      </button>
+      <a>
+        <button (click)="logout()" class="middle none font-sans font-bold center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30 hidden items-center gap-1 px-4 xl:flex" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="h-5 w-5 text-blue-gray-500">
+            <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clip-rule="evenodd"></path>
+          </svg>Log Out </button>
+        <button class="relative middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30 grid xl:hidden" type="button">
+          <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="h-5 w-5 text-blue-gray-500">
+              <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clip-rule="evenodd"></path>
+            </svg>
+          </span>
+        </button>
+      </a>
+    </div>
+  </div>
+  <!-- Panel lateral del carrito -->
+  <div *ngIf="mostrarCarrito" class="fixed top-0 right-0 w-full max-w-md h-full bg-white shadow-2xl z-50 p-6 overflow-y-auto border-l border-blue-200 animate-slideIn flex flex-col">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-xl font-bold text-red-600 flex items-center gap-2">
+        <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6 text-red-600'><path stroke-linecap='round' stroke-linejoin='round' d='M2.25 3h1.386a1.5 1.5 0 011.415 1.028l.298.894M6.75 6h14.25l-1.5 9H7.5m0 0L6.136 4.922A1.5 1.5 0 004.721 4H3m4.5 13.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm10.5 0a1.5 1.5 0 100 3 1.5 1.5 0 000-3z'/></svg>
+        Carrito
+      </h2>
+      <button (click)="toggleCarrito()" class="text-gray-500 hover:text-red-600 text-2xl font-bold">&times;</button>
+    </div>
+    <div *ngIf="carritoService.getCarrito().length === 0" class="text-gray-500 text-center py-8 flex-1 flex items-center justify-center">No hay productos en el carrito.</div>
+    <div *ngIf="carritoService.getCarrito().length > 0" class="flex-1 flex flex-col">
+      <ul class="flex-1 overflow-y-auto divide-y divide-gray-200 mb-4">
+        <li *ngFor="let p of carritoService.getCarrito()" class="flex items-center justify-between py-3 gap-2">
+          <div class="flex items-center gap-2 min-w-0 w-32">
+            <img [src]="p.icon" [alt]="p.nombre" class="w-8 h-8 flex-shrink-0" />
+            <span class="font-semibold truncate">{{ p.nombre }}</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <button (click)="disminuirCantidad(p)" class="bg-red-500 text-white px-2 py-1 rounded">-</button>
+            <input type="number" min="1" max="20" [value]="p.cantidad" (change)="cambiarCantidad(p, $event)" class="w-12 border rounded px-2 py-1 text-center text-black font-bold bg-white appearance-none" style="appearance: none; -webkit-appearance: none; -moz-appearance: textfield;" />
+            <style>
+              input[type=number]::-webkit-inner-spin-button,
+              input[type=number]::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+              }
+              input[type=number] {
+                appearance: none;
+                -webkit-appearance: none;
+                -moz-appearance: textfield;
+              }
+            </style>
+            <button (click)="aumentarCantidad(p)" class="bg-green-600 text-white px-2 py-1 rounded">+</button>
+          </div>
+          <span class="font-semibold w-24 text-right">${{ (p.precio * p.cantidad) | number:'1.0-0' }} COL</span>
+          <button (click)="quitarDelCarrito(p)" class="ml-2 bg-red-500 text-white px-2 py-1 rounded hover:bg-red-700">Quitar</button>
+        </li>
+      </ul>
+      <div class="mt-auto pt-4 border-t border-gray-200 flex flex-col items-end">
+        <span class="text-lg font-bold text-green-700">Total: ${{ totalCarrito | number:'1.0-0' }} COL</span>
+      </div>
+    </div>
+  </div>
+  <style>
+    .animate-slideIn {
+      animation: slideIn 0.2s ease;
+    }
+    @keyframes slideIn {
+      from { right: -100%; }
+      to { right: 0; }
+    }
+  </style>

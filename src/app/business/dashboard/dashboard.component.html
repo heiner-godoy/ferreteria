@@ -1,0 +1,88 @@
+<div class="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
+  <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md cursor-pointer" (click)="goToProfile()">
+    <div class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-blue-600 to-blue-400 text-white shadow-blue-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6V5.25A2.25 2.25 0 0013.5 3h-3A2.25 2.25 0 008.25 5.25V6m10.5 0A2.25 2.25 0 0121 8.25v10.5A2.25 2.25 0 0118.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6h13.5z" />
+      </svg>
+    </div>
+    <div class="p-4 text-right">
+      <h4 class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
+        Usuarios
+      </h4>
+    </div>
+  </div>
+  <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md cursor-pointer" (click)="mostrarModalTipoProducto = true">
+    <div class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-green-600 to-green-400 text-white shadow-green-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2" />
+      </svg>
+    </div>
+    <div class="p-4 text-right">
+      <h4 class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
+        Productos
+      </h4>
+    </div>
+  </div>
+  <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md cursor-pointer" (click)="goToFacturas()">
+    <div class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-red-600 to-red-400 text-white shadow-red-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2a2 2 0 012-2h2a2 2 0 012 2v2m-6 4h6a2 2 0 002-2v-6a2 2 0 00-2-2H7a2 2 0 00-2 2v6a2 2 0 002 2z" />
+      </svg>
+    </div>
+    <div class="p-4 text-right">
+      <h4 class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
+        Facturas
+        <span *ngIf="cantidadFacturas > 0" class="ml-2 text-base font-bold text-green-600">({{ cantidadFacturas }})</span>
+      </h4>
+    </div>
+  </div>
+  <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md cursor-pointer">
+    <div class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-yellow-600 to-yellow-400 text-white shadow-yellow-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7" />
+      </svg>
+    </div>
+    <div class="p-4 text-right">
+      <h4 class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
+        Clientes
+      </h4>
+    </div>
+  </div>
+  <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md cursor-pointer">
+    <div class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-purple-600 to-purple-400 text-white shadow-purple-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-white">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8 17l4-4 4 4m0 0V7m0 10H8" />
+      </svg>
+    </div>
+    <div class="p-4 text-right">
+      <h4 class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
+        Proveedores
+      </h4>
+    </div>
+  </div>
+</div>
+<!-- Modal para agregar/eliminar producto -->
+<div *ngIf="mostrarModalTipoProducto" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+  <div class="bg-white rounded-xl shadow-lg p-8 w-full max-w-lg flex flex-col items-center relative">
+    <button (click)="cerrarModal()" class="absolute top-2 right-2 text-gray-400 hover:text-red-600 text-2xl font-bold focus:outline-none" aria-label="Cerrar modal">&times;</button>
+    <h3 class="text-lg font-bold mb-4 text-green-700">¿Qué tipo de producto va a agregar?</h3>
+    <ng-container *ngIf="!tipoSeleccionado">
+      <button class="bg-green-600 text-white px-4 py-2 rounded mb-2 w-full hover:bg-green-700" (click)="seleccionarTipo('Manual')">Manual</button>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded mb-2 w-full hover:bg-blue-700" (click)="seleccionarTipo('Eléctrica')">Eléctrica</button>
+    </ng-container>
+    <ng-container *ngIf="tipoSeleccionado">
+      <div class="mb-2 text-gray-700 text-lg">Tipo: <span class="font-bold">{{ tipoSeleccionado }}</span></div>
+      <input type="text" [(ngModel)]="nuevoProducto" placeholder="Nombre del producto" class="border rounded px-3 py-2 text-base w-full mb-3" />
+      <input type="number" [(ngModel)]="nuevoPrecio" placeholder="Precio" min="1" step="0.01" class="border rounded px-3 py-2 text-base w-full mb-3" />
+      <button (click)="agregarProductoModal()" class="bg-green-600 text-white px-4 py-2 rounded w-full hover:bg-green-700">Agregar producto</button>
+      <button class="mt-2 text-gray-500 hover:underline w-full" (click)="cerrarModal()">Cancelar</button>
+    </ng-container>
+    <hr class="my-4 w-full border-t border-gray-200" />
+    <h4 class="text-red-700 font-bold mb-2">Eliminar producto</h4>
+    <input type="text" [(ngModel)]="nombreEliminar" placeholder="Nombre del producto" class="border rounded px-2 py-1 text-base w-full mb-2" />
+    <button (click)="eliminarProductoPorNombre()" class="bg-red-600 text-white px-4 py-2 rounded w-full hover:bg-red-700">Eliminar</button>
+    <div *ngIf="mensajeEliminar" class="mt-2 text-center text-sm font-semibold" [ngClass]="{'text-green-600': mensajeEliminar.includes('correctamente'), 'text-red-600': mensajeEliminar.includes('No se encontró')}">
+      {{ mensajeEliminar }}
+    </div>
+  </div>
+</div>

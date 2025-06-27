@@ -1,0 +1,14 @@
+.max-w-xl { max-width: 36rem; }
+.mt-12 { margin-top: 3rem; }
+.bg-white { background: #fff; }
+.rounded-xl { border-radius: 1rem; }
+.shadow-lg { box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); }
+.p-8 { padding: 2rem; }
+.font-bold { font-weight: bold; }
+.text-indigo-700 { color: #4338ca; }
+.mb-4 { margin-bottom: 1rem; }
+.list-disc { list-style-type: disc; }
+.pl-6 { padding-left: 1.5rem; }
+.text-left { text-align: left; }
+.font-semibold { font-weight: 600; }
+.text-gray-600 { color: #4b5563; }

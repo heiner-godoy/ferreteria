@@ -1,0 +1,41 @@
+<div class="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-2">
+  <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-2">
+    <div class="p-6">
+      <input type="text" [(ngModel)]="search" placeholder="Escribe aquí para buscar herramientas..." class="mb-6 w-full border border-blue-300 rounded px-3 py-2 focus:outline-none focus:border-blue-500" />
+      <h2 class="text-xl font-bold mb-4">Herramientas Manuales</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-8">
+        <div *ngFor="let h of herramientasManualesFiltradas" class="flex flex-col items-center bg-gray-100 rounded-lg p-4 shadow hover:shadow-lg transition cursor-pointer" (click)="agregarAlCarrito(h)">
+          <img [src]="h.icon" [alt]="h.nombre" class="w-10 h-10 mb-2" />
+          <span class="font-semibold">{{ h.nombre }}</span>
+          <span class="text-green-700 font-bold mt-1">${{ h.precio | number:'1.0-0' }} COL</span>
+          <ng-container *ngIf="getCantidadSeleccionada(h.nombre) > 0">
+            <div class="mt-1 flex items-center gap-2" (click)="$event.stopPropagation()">
+              <button (click)="disminuirCantidad(getProductoCarrito(h.nombre)); $event.stopPropagation();" class="bg-red-500 text-white px-2 py-1 rounded">-</button>
+              <span class="text-blue-700 font-semibold">{{ getCantidadSeleccionada(h.nombre) }}</span>
+              <button (click)="aumentarCantidad(getProductoCarrito(h.nombre)); $event.stopPropagation();" class="bg-green-600 text-white px-2 py-1 rounded">+</button>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <h2 class="text-xl font-bold mb-4">Herramientas Eléctricas</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        <div *ngFor="let h of herramientasElectricasFiltradas" class="flex flex-col items-center bg-gray-100 rounded-lg p-4 shadow hover:shadow-lg transition cursor-pointer" (click)="agregarAlCarrito(h)">
+          <img [src]="h.icon" [alt]="h.nombre" class="w-10 h-10 mb-2" />
+          <span class="font-semibold">{{ h.nombre }}</span>
+          <span class="text-green-700 font-bold mt-1">${{ h.precio | number:'1.0-0' }} COL</span>
+          <ng-container *ngIf="getCantidadSeleccionada(h.nombre) > 0">
+            <div class="mt-1 flex items-center gap-2" (click)="$event.stopPropagation()">
+              <button (click)="disminuirCantidad(getProductoCarrito(h.nombre)); $event.stopPropagation();" class="bg-red-500 text-white px-2 py-1 rounded">-</button>
+              <span class="text-blue-700 font-semibold">{{ getCantidadSeleccionada(h.nombre) }}</span>
+              <button (click)="aumentarCantidad(getProductoCarrito(h.nombre)); $event.stopPropagation();" class="bg-green-600 text-white px-2 py-1 rounded">+</button>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <!-- Solo mostrar la suma total de productos en el carrito -->
+    <div *ngIf="carrito.length > 0" class="mt-4 flex justify-end">
+      <span class="text-lg font-bold text-green-700">Total: ${{ totalCarrito | number:'1.0-0' }} COL</span>
+    </div>
+  </div>
+</div>
